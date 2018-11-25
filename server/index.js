@@ -49,6 +49,7 @@ app.get('/values/all', async (req, res) => {
 app.get('/values/current', async (req, res) => {
     redisClient.hgetall('values', (err, values) => {
         if (err) console.log(err);
+        console.log('Inside values-current, here are the values: ');
         console.log(values);
         
         
@@ -58,6 +59,8 @@ app.get('/values/current', async (req, res) => {
 
 app.post('/values', async (req, res) => {
     // console.log(req);
+    console.log('Inside values api call: ');
+    
     console.log(req.body);
     const index = req.body.index;
     if (parseInt(index) > 40) {
